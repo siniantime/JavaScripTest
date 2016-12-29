@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>Sup_</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			margin: 30px auto;
+			width: 300px;
+			border: 2px solid #ccc;
+			padding:13px;
+		}
+		.container ul li{
+			float: left;
+			margin: 13px;
+			width: 74px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+			overflow: hidden;
+			font-size: 2em;
+			background: #ccc;
+			list-style: none;
+		}
+		.container .active{
+			background: yellow;
+		}
+		.container .textBox{
+			overflow: left;
+			margin:13px;
+			width: 274px;
+			min-height: 50px;
+			text-align: center;
+			line-height: 1em;
+			padding: 1em;
+		}
+	</style>
+</head>
+<body>
+	<div id='container' class="container">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+		</ul>
+		<textarea id='textBox' class="textBox"></textarea>
+	</div>
+	<script>
+		window.onload=function(){
+			var oContaine=document.getElementById('container');
+			var oLi=oContaine.getElementsByTagName('li');
+			var oTxtBox=document.getElementById('textBox');
+			var textArray=new Array(
+			'你我本无缘\n全靠我死撑',
+			'我告诉你今晚星星很美丽\n你告诉她今晚星星很美丽',
+			'可是我还爱着你呀\n你怎么就不爱我了',
+			'你转身的一瞬\n我萧条的一生',
+			'他不想公开这段关系',
+			'明明在谈恋爱\n却跟单身狗一样',
+			'你在哭泣\n他却安然睡去',
+			'我回你是秒回\n而你回我却是一个轮回',
+			'本想牵起你的手作为我的新娘\n无奈最后西装革履去你婚礼现场'
+			);
+			for (var i = 0;i<oLi.length;i++){
+				oLi[i].index=i;
+				//alert(oLi[i].index);
+				oLi[i].onmouseover=function(){
+					for(var i=0;i<oLi.length;i++){
+						oLi[i].className='';
+					}
+					this.className='active';
+					oTxtBox.value='3';
+					//alert(this.index);
+					oTxtBox.value=textArray[this.index];
+				};
+			}
+		};
+	</script>
+</body>
+<html>
