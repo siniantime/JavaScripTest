@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>Sup_</title>
+	<style>
+		input{
+			
+		}
+		.news{
+			width: 200px;
+			height: 200px;
+			border: 2px solid #ccc;
+			display: none;
+		}
+		.show{
+			display: block;
+		}
+		.active{
+			background: yellow;
+		}
+	</style>
+	<script>
+	window.onload=function () {
+		var oNewsNav=document.getElementById('newsNav');
+		var oNews=document.getElementById('news');
+		var oBtn=oNewsNav.getElementsByTagName('input');
+		var oNewsDiv=oNews.getElementsByTagName('div');
+		for (var i=0;i<oBtn.length;i++)
+		{
+			oBtn[i].index=i;
+			oBtn[i].onclick=function ()
+			{
+				for (var i=0;i<oBtn.length;i++)
+				{
+					oBtn[i].className='';
+					oNewsDiv[i].style.display='none';
+				}
+				this.className='active';
+				//alert(this.index);
+				oNewsDiv[this.index].style.display='block';
+			};
+		}
+	};	
+	</script>
+</head>
+<body>
+	<div id='newsNav'>
+		<input type="button" value="科技"></input>
+		<input type="button" value="教育"></input>
+		<input type="button" value="娱乐"></input>
+		<input type="button" value="体育"></input>
+	</div>
+	<div id='news'>
+		<div class="news show">科技</div>
+		<div class="news">教育</div>
+		<div class="news">娱乐</div>
+		<div class="news">体育</div>
+	</div>
+</body>
+<html>
