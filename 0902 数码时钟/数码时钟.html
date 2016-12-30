@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>Sup_</title>
+	<style>
+		body{
+			background: #222;
+		}
+		#container{
+			font-size: 50px;
+			color: #FFF;
+		}
+	</style>
+
+</head>
+<body>
+	<div id='container'>
+		<img src='images/0.png'/>
+		<img src='images/0.png'/>
+		:
+		<img src='images/0.png'/>
+		<img src='images/0.png'/>
+		:
+		<img src='images/0.png'/>
+		<img src='images/0.png'/>
+		<img src='images/week.png'/>
+		<img src=''/>
+	</div>
+	<script>
+		window.onload=function(){
+			function showClock(){
+				var clock=document.getElementsByTagName('img');
+				//----------------------------------------------------设置时分秒
+				var clockArray=[];
+				var oDate=new Date();
+				//获取一个数字十分位上的数字
+				function getTenDigit(num){
+					return Math.floor(num/10);
+				}
+				//获取一个数字各位上的数字
+				function getUnitDigit(num){
+					return num-10*Math.floor(num/10);
+				}
+				//将当前的时间存储在数组中
+				clockArray.push(getTenDigit(oDate.getHours()));
+				clockArray.push(getUnitDigit(oDate.getHours()));
+				clockArray.push(getTenDigit(oDate.getMinutes()));
+				clockArray.push(getUnitDigit(oDate.getMinutes()));
+				clockArray.push(getTenDigit(oDate.getSeconds()));
+				clockArray.push(getUnitDigit(oDate.getSeconds()));
+				//alert(clockArray);//测试获取的数组是否有问题
+				for(var i=0;i<clockArray.length;i++){
+				clock[i].src='images/'+clockArray[i]+'.png';
+				}
+				//-----------------------------------------------------设置星期
+				//星期图片的路径
+				var weekArray=['seven','one','two','three','four','five','six'];
+				clock[7].src='images/'+weekArray[oDate.getDay()]+'.png';
+			}
+			setInterval(showClock,1000);
+			showClock();
+		};
+	</script>
+</body>
+<html>
