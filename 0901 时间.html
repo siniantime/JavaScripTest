@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>Sup_</title>
+	<style>
+	</style>
+	<script>
+		//------------------------------------计时器基本语法
+		/*
+		function show(){
+			alert('Sup_');
+		}
+		//setInterval(show,1000);//函数每个1000毫秒执行一次；第一个参数是要调用的函数，第二个参数是计时器的时间
+		//setTimeout(show,1000);//函数在1000毫秒后执行
+		*/
+		//------------------------------------定时器的开启和关闭
+		/*
+		window.onload=function(){
+			var open=document.getElementById('open');
+			var close=document.getElementById('close');
+			var timer=null;
+			open.onclick=function(){
+				timer=setInterval(function(){
+					alert('Sup_');
+				},1000);
+			};
+			close.onclick=function(){
+				clearInterval(timer);//指定关闭的定时器为timer
+			};
+
+		};
+		*/
+		//------------------------------------获取系统日期时间
+		var oDate=new Date();
+		//alert(oDate.getFullYear());//-----------获取年
+		//alert(oDate.getMonth()+1);//------------获取月份，需要+1
+		//alert(oDate.getDate());//---------------获取日
+		//alert(oDate.getDay());//----------------获取星期
+		//alert(oDate.getHours());//--------------获取时
+		//alert(oDate.getMinutes());//------------获取分钟
+		//alert(oDate.getSeconds());//------------获取秒
+	</script>
+</head>
+<body>
+	<!--——————————————————————————————————————定时器的开启与关闭
+	<button id='open'>开启</button>
+	<button id='close'>关闭</button>
+	-->
+</body>
+<html>
