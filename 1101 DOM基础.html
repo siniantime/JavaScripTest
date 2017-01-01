@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>Sup_</title>
+	<style>
+	</style>
+	<script>
+		window.onload=function(){
+			//var oUl1=document.getElementById('ul1');
+			//----------------------------------------------childNodes：子节点
+			//alert(oUl1.childNodes.length);//获取子节点个数
+			//----------------------------------------------nodeType:节点类型
+			/*
+			for (var i=0;i<oUl1.childNodes.length;i++){
+				alert(oUl1.childNodes[i].nodeType);
+			}
+			*/
+			//---------------------------------------------------1：元素；2：属性；3：文本；8：注释；9：文档
+			/*
+			for (var i=0;i<oUl1.childNodes.length;i++){
+				if(oUl1.childNodes[i].nodeType==1){
+					oUl1.childNodes[i].style.background="#ccc";
+				}
+			}
+			*/
+			//-----------------------------------------------children:只选取元素节点
+			//alert(oUl1.children);
+			//-----------------------------------------------parentNode：父节点
+			//alert(oUl1.parentNode);
+			/*------------------------------------------此段代码不能正常运行
+			var oA=document.getElementsByTagName('a');
+			for(var i=0;i<oA.length;i++){
+				oA[i].onclick=function(){
+					// this.parentNode.style.display='none';
+					this.style.display='none';
+					//alert(this.style.display);
+				};
+			}
+			*/
+			//------------------------------------------------firstChild/lastChild
+			//------------------------------------------------firstElementChild
+			//oUl1.firstElementChild.style.background='red';
+			//------------------------------------------------setAttribute,设置元素属性，后面跟连个参数
+			//------------------------------------------------getAttribute，获取元素属性；removeAttribute：删除元素属性
+			/*
+			var oTxt=document.getElementById('txt');
+			var oBtn=document.getElementById('btn');
+			oBtn.onclick=function(){
+				oTxt.setAttribute('value','Sup_');
+			};
+			*/
+			//-------------------------------------------------className获取元素
+			/*
+			var oUl1=document.getElementById('ul1');
+			var oLi=oUl1.getElementsByTagName('li');
+			for(var i=0;i<oLi.length;i++){
+				if(oLi[i].className=='box'){
+					oLi[i].style.background='#ccc';
+				}
+			}
+			*/
+			//--------------------------------------------------封装上述函数
+
+			function getElementByClass(oParent,sClass){
+				var oResult=[];
+				var oEle=oParent.getElementsByTagName('*');
+				for (var i=0;i<oEle.length;i++){
+					if(oEle[i].className==sClass){
+						oResult.push(oEle[i]);
+					}
+				}
+				return oResult;
+			}
+			var oUl=document.getElementById('ul1');
+			var oBox=getElementByClass(oUl,'box');
+			for(var i=0;i<oBox.length;i++){
+				oBox[i].style.background='red';
+			}
+		}; 
+	</script>
+</head>
+<body>
+	<!--
+	<ul id='ul1'>
+		<li>Sup_<a href="">隐藏</a></li>
+		<li>Sup_<a href="">隐藏</a></li>
+	</ul>
+	-->
+	<!--——————————————————————————————————————————————————————setAttribute
+	<input id='txt' type="text" />
+	<button id='btn'>按钮</button>
+	-->
+	<!--——————————————————————————————————————————————————————className-->
+	<ul id='ul1'>
+		<li class="box"></li>
+		<li></li>
+		<li class="box"></li>
+	</ul>
+</body>
+<html>
