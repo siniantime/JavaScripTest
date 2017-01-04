@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>Sup_</title>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+		*{margin: 0;padding: 0;}
+		#container{
+			position: relative;
+			top:100px;
+			left: 50%;
+			margin-left: -400px;
+			width: 800px;
+			height: 200px;
+			overflow: hidden;
+		}
+		ul{
+			position: absolute;
+			width: 1600px;
+			left: 0px;
+			z-index: 1;
+		}	
+		li{
+			position: relative;
+			margin: 0 5px;
+			padding: 10px;
+			width: 170px;
+			height: 200px;
+			color: #fff;
+			background: #801638;
+			list-style: none;
+			float: left;
+			text-align: center;
+			vertical-align:middle;
+		}
+		#left,#right{
+			position: relative;
+			margin-top:-30px; 
+			top:50%;
+			height: 60px;
+			width: 60px;
+			font-size: 50px;
+			line-height: 60px;
+			color: #fff;
+			background-color: #ccc;
+			z-index: 2;
+			text-decoration: none;
+		}
+		#left{
+			float: left;
+		}
+		#right{
+			float: right;
+		}
+	</style>
+	<script>
+		//jQ版本
+		//没有达到想要的效果
+		/*
+		$(document).ready(function(){
+			var timer=null;
+			timer=setInterval(function(){
+				$('#text').animate({left:'-800px'},2000,function(){
+					$('#text').css('left','0px');
+				});
+			},2000);
+			//clearInterval(timer);	
+		});
+		*/
+		//jQuery-JavaScript综合运用
+		//方法一：
+		$(document).ready(function(){
+				var timer=null;
+				//记录停止之前移动的方向
+				var direction=null;
+
+				star('left');
+				$('button').click(function(){
+					star('right');
+				});
+				$('ul').mouseenter(function(){
+					stop(timer);
+				});
+				$('ul').mouseleave(function(){
+					star(direction);
+					//$('#left,#right').fadeOut();
+				});
+				$('#left').click(function(){
+					star('left');
+				});
+				$('#right').click(function(){
+					star('right');
+				});
+				//停止移动
+				function stop(timer){
+					clearInterval(timer);
+					timer=null;
+				}
+
+				//开始移动
+				function star(direction){
+					clearInterval(timer);
+					if(direction=='left'){
+						timer=setInterval(function(){
+							toMove($('#text'),1,-800);
+						},30);
+					}
+					else{
+						timer=setInterval(function(){
+							toMove($('#text'),1,0);
+						},30);
+					}
+				}
+
+				//移动图片
+				function toMove(element,speed,target){
+					if(Math.abs(target - element.position().left) < speed){
+						//claerInterval(timer);
+						element.css('left',target);
+						if(target===0){
+							element.css('left',-element.width()/2);
+						}
+						else{
+							element.css('left',0);
+						}
+					}
+					else{
+						if(target - element.position().left > 0){
+							element.css('left',element.position().left+speed+'px');
+							direction='right';
+						}
+						else{
+							element.css('left',element.position().left-speed+'px');
+							direction='left';
+						}
+					}
+				}
+		});
+		/*
+		function toMove(element,speed,target){
+			var timer=null;
+			var elementLeft=element.position().left;
+			
+			timer=setInterval(function(){
+				if(Math.abs(target - element.position().left) < speed){
+					//claerInterval(timer);
+					element.css('left',target);
+					element.css('left',elementLeft);
+				}
+				else{
+					if(target - element.position().left > 0){
+						element.css('left',element.position().left+speed+'px');
+					}
+					else{
+						element.css('left',element.position().left-speed+'px');
+					}
+				}
+			},30);
+			//clearInterval(timer);
+		}
+		/*
+		/*
+		$(document).ready(function(){
+			var timer=null;
+			timer=setInterval(function(){
+				//alert(Math.abs(-800 - element.css('left')) <= 50);
+				if(Math.abs(-800 - $('#text').css('left')) <= 50){
+					claerInterval(timer);
+					$('#text').css('left','-800px');
+				}
+				else{
+					if(-800 - $('#text').css('left') > 0){
+						$('#text').css('left',$('#text').css('left')+50+'px');
+					}
+					else{
+						$('#text').css('left',$('#text').css('left')-50+'px');
+					}
+				}
+				$('#text').css('left',$('#text').css('left')+50+'px');
+
+				alert($('#text').position().left);
+			},2000);
+		});
+		*/
+		//方法二：
+
+
+	</script>
+</head>
+<body>
+	<div id='container'>
+		<ul id='text'>
+			<li><p>问：公务员怎么做到年薪百万？</br>答：公务员怎么做到年薪百万的方法，都已经写入刑法了，有需要的话可以前去查看。</p></li>
+			<li><p>问：你必讲的笑话是哪个？</br>答：话说当年准备选主席的时候，众人开会在讨论选谁当主席？这时候有时候代表发言了：“时政这么乱，选毛主席啊？”。。。</p></li>
+			<li><p>问：杀气是一种什么感觉？</br>答：你妈喊你全名的时候</p></li>
+			<li><p>问：你印象深刻的误听歌词有哪些？</br>中华民族到了最危险的时候，美国人被迫着发出最后的吼声</p></li>
+			<li><p>问：公务员怎么做到年薪百万？</br>答：公务员怎么做到年薪百万的方法，都已经写入刑法了，有需要的话可以前去查看。</p></li>
+			<li><p>问：你必讲的笑话是哪个？</br>答：话说当年准备选主席的时候，众人开会在讨论选谁当主席？这时候有时候代表发言了：“时政这么乱，选毛主席啊？”。。。</p></li>
+			<li><p>问：杀气是一种什么感觉？</br>答：你妈喊你全名的时候</p></li>
+			<li><p>问：你印象深刻的误听歌词有哪些？</br>中华民族到了最危险的时候，美国人被迫着发出最后的吼声</p></li>
+		</ul>
+	</div>
+	<div>
+		<a id='left' href="javascript:">←</a>
+		<a id='right' href="javascript:">→</a>
+	</div>
+</body>
+<html>
